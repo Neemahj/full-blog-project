@@ -29,7 +29,7 @@ header h1{
   color: black;
 }
 
-form{
+.blog-form{
   width: 100%;
   max-width: 700px;
   border-left: 1px solid black;
@@ -78,6 +78,43 @@ textarea{
   background-color: black;
   color: antiquewhite;
   border-radius: 5px;
+}
+
+.user-form{
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  height: 550px;
+  background-color: black;
+  color: bisque;
+  border-radius: 15px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-details{
+  padding: 10px;
+}
+
+.user-details input[type=text]{
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.create-btn{
+  align-self: end;
+}
+
+.create-btn button{
+  padding: 5px;
+  background-color: bisque;
+  border-radius: 5px;
+}
+
+.sign-in{
+  align-self: center;
 }
 
 .single-blog{

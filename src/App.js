@@ -3,6 +3,7 @@ import CreateBlog from './components/CreateBlog';
 import Header from './components/Header';
 import { Routes, Route } from "react-router-dom"; 
 import BlogPage from './components/BlogPage';
+import Register from './components/Register';
 
 function App() {
   return (
@@ -11,8 +12,9 @@ function App() {
       <Routes>
         <Route path="/" element={<BlogPage />} />
         <Route path="new-blog" element={<CreateBlog />} />
+        <Route path="register" element={<Register />} />
       </Routes>
-    
+
     </div>
   );
 }
