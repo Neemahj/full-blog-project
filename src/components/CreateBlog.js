@@ -28,7 +28,7 @@ const CreateBlog = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="blog-form">
       <div className="field">
         <label>
           Author:
