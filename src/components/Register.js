@@ -1,26 +1,39 @@
-import { useRef, useState } from "react";
-
+import { useState } from "react";
+import { REGISTER_API } from "./Api";
+import axios from "axios";
+import { Link } from "react-router-dom";
 const Register = () => {
-  // const useRef = useRef();
-  // const errRef = useRef();
 
   const [userDetails, setUserDetails] = useState({
-    fname: "",
-    lname: "",
+    first_name: "",
+    last_name: "",
     email: "",
+    username: "",
     password: "",
-    confirmPassword: "",
+    password2: "",
   });
 
   const handleChange = (e) => {
-    setUserDetails({ ...userDetails, [e.target.name]: e.target.value});
-  }
+    setUserDetails({ ...userDetails, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      axios.post(REGISTER_API, userDetails);
+    } catch (err) {
+      console.log(err);
+    }
+    setUserDetails({
+      first_name: "",
+      last_name: "",
+      email: "",
+      username: "",
+      password: "",
+      password2: "",
+    });
+  };
 
-    //N working url yet
-  }
   return (
     <div>
       <form className="user-form" onSubmit={handleSubmit}>
@@ -28,10 +41,9 @@ const Register = () => {
           <label>First Name:</label>
           <input
             type="text"
-            name="fname"
-            value={userDetails.fname}
+            name="first_name"
+            value={userDetails.first_name}
             onChange={handleChange}
-            autoComplete="off"
             required
           />
         </div>
@@ -39,10 +51,9 @@ const Register = () => {
           <label>Last Name:</label>
           <input
             type="text"
-            name="lname"
-            value={userDetails.lname}
+            name="last_name"
+            value={userDetails.last_name}
             onChange={handleChange}
-            autoComplete="off"
             required
           />
         </div>
@@ -53,7 +64,6 @@ const Register = () => {
             name="email"
             value={userDetails.email}
             onChange={handleChange}
-            autoComplete="off"
             required
           />
         </div>
@@ -64,7 +74,6 @@ const Register = () => {
             name="username"
             value={userDetails.username}
             onChange={handleChange}
-            autoComplete="off"
             required
           />
         </div>
@@ -75,7 +84,6 @@ const Register = () => {
             name="password"
             value={userDetails.password}
             onChange={handleChange}
-            autoComplete="off"
             required
           />
         </div>
@@ -83,10 +91,9 @@ const Register = () => {
           <label>Confirm Password:</label>
           <input
             type="text"
-            name="confirmPassword"
-            value={userDetails.confirmPassword}
+            name="password2"
+            value={userDetails.password2}
             onChange={handleChange}
-            autoComplete="off"
             required
           />
         </div>
@@ -95,7 +102,7 @@ const Register = () => {
         </div>
         <div className="sign-in">
           <p>Already Have an Account?</p>
-          <button>Sign in</button>
+          <Link to="/login">Sign in</Link>
         </div>
       </form>
     </div>
